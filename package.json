@@ -1,0 +1,11 @@
+{
+  "name": "noderestapiscrud",
+  "version": "1.0.0",
+  "description": "basic crud operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pratik pawar",
+  "license": "ISC"
+}
