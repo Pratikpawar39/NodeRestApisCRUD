@@ -6,7 +6,7 @@ const cors = require('cors');
 const mapRoutes = require('express-routes-mapper');
 
 const {
-    PORT='2024',
+    PORT=2024,
     NODE_ENV,
     BODY_PARSER_JSON_LIMIT = "35mb",
   } = process.env;
@@ -19,6 +19,8 @@ const app = express();
 const server = http.Server(app);
 
 //routes
+
+console.log('routeConfig.publicRoutes', routeConfig.publicRoutes)
 const mappedOpenRoutes = mapRoutes(routeConfig.publicRoutes, 'controllers/')
 
 //use middlewares
@@ -31,6 +33,7 @@ app.use('/api', mappedOpenRoutes);
 
 //server 
 server.listen( PORT , () => {
+    let environment = NODE_ENV;
     if (environment !== 'production' &&
       environment !== 'development' &&
       environment !== 'testing'
@@ -41,6 +44,6 @@ server.listen( PORT , () => {
     }
     // eslint-disable-next-line no-console
     console.log(`auth server is running on ${PORT}`);
-    return DB;
+    return;
   });
 

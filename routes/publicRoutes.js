@@ -4,4 +4,6 @@ const publicRoutes = {
     ...userPrivate,
 }
 
+console.log('Read routes pub', userPrivate)
+
 module.exports = publicRoutes;

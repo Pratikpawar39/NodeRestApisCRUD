@@ -1,6 +1,6 @@
 const { mongo, getUuid, moment } = require('../helper/utils');
 const {
-    userCollection = 'userDetails'
+    USER_COLLECTION = 'userDetails'
 } = process.env;
 
 const UserModel = () => {
@@ -19,7 +19,7 @@ const UserModel = () => {
 
         try {   
             
-            let result = await mongo.findAll( userCollection, {});
+            let result = await mongo.findAll( USER_COLLECTION, {});
 
             if( result && result.length > 0 ){
 
@@ -92,7 +92,7 @@ const UserModel = () => {
                 summary: rData.summary
             }
 
-            let insertResult = await mongo.insertOne( userCollection, insertObj );
+            let insertResult = await mongo.insertOne( USER_COLLECTION, insertObj );
 
             if( insertResult ){
 
@@ -145,7 +145,7 @@ const UserModel = () => {
                 _id: rData.id,
             };
 
-            let userDetail = await mongo.findOne( userCollection, filter);
+            let userDetail = await mongo.findOne( USER_COLLECTION, filter);
 
             if( userDetail ){
 
@@ -161,7 +161,7 @@ const UserModel = () => {
                     upsertData.summary = rData.summary;
                 }
 
-                let updateResult =  await mongo.updateOne(userCollection, filter, upsertData);
+                let updateResult =  await mongo.updateOne(USER_COLLECTION, filter, upsertData);
 
                 if( updateResult ){
                     return {
@@ -223,7 +223,7 @@ const UserModel = () => {
                 _id: rData.id
             }
 
-            let checkUserExist = await mongo.findOne(userCollection, filter);
+            let checkUserExist = await mongo.findOne(USER_COLLECTION, filter);
 
             if( !checkUserExist ){
                 return {
@@ -234,7 +234,7 @@ const UserModel = () => {
                 }
             }
 
-            let updateResult = await mongo.remove(userCollection, filter);
+            let updateResult = await mongo.remove(USER_COLLECTION, filter);
 
             if( updateResult ){
                 return {
